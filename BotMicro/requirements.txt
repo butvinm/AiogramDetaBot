@@ -1,0 +1,3 @@
+odetam>=1.0.0
+aiogram>=3.0.0b1
+aiogram-deta @ git+https://github.com/mamsdeveloper/deta.git@main#egg=aiogram-deta
