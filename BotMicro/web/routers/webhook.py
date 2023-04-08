@@ -9,7 +9,7 @@ from web.stubs import BotStub, DispatcherStub, SecretStub
 webhook_router = APIRouter(prefix='/webhook', tags=['Webhook'])
 
 
-@webhook_router.post('/')
+@webhook_router.post('')
 async def feed_update(
     update: Update,
     secret: SecretStr = Header(alias='X-Telegram-Bot-Api-Secret-Token'),
