@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "botmicro"
+version = "0.1.0"
+description = ""
+authors = ["mamsdeveloper <butvin.mihail@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiogram-deta = { git = "https://github.com/mamsdeveloper/deta.git", branch = "main" }
+odetam = "^1.0.0"
+aiogram = "^3.0.0b1"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

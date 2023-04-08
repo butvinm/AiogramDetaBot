@@ -1,0 +1,23 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: BotMicro
+    src: BotMicro
+    engine: python3.9
+    primary: true
+    public_routes:
+      - "/webhook"
+      - "/webhook/*"
+
+    presets:
+      env:
+        - name: BOT_TOKEN
+          description: Secret token of telegram bot
+        - name: WEBHOOK_SECRET
+          description: Secret value for telegram webhook
+        - name: ENABLE_ERRORS_LOGS
+          description: Enable logging of errors. Logs are stored in the "logs" Deta Base.
+          default: "True"
+        - name: ENABLE_EVENTS_LOGS
+          description: Enable logging of each telegram event. Logs are stored in the "logs" Deta Base.
+          default: "True"
