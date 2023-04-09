@@ -16,20 +16,13 @@ Telegram Bot template with [aiogram](https://github.com/aiogram/aiogram) for dep
 4. Run `space push` to deploy the code to Deta Space
 5. Go to [Builder](https://deta.space/builder) and open builder instance of your project 
 6. Set up environment variables in Configuration section
-7. Click on `Open Builder Instance` button in Overview section and copy the URL of the builder instance
-8. Set telegram webhook 
-
-```bash
-curl -X POST https://api.telegram.org/bot<BOT_TOKEN>/setWebhook 
-    -H "Content-Type: application/json" 
-    -d '{"url": "https://<builder instance url>/webhook", "secret_token": "<WEBHOOK_SECRET>"}'
-```
-
-9. Send `/start` to your bot and check that it responds
-
+7. Click on `Open Builder Instance` button
+8. Send `/start` to your bot and check that it responds
 
 ## Features
 
 - Logging of errors and events to Deta Base (Can be disabled using `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables)
 - Preset CallbackAnswer middleware
 - CallbackMessageMiddleware that inject `query.message` object into callback handler data 
+- Auto set webhook on startup
+  
