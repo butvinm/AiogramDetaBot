@@ -4,3 +4,7 @@ class BotStub:
 
 class DispatcherStub:
     pass
+
+
+class SecretStub:
+    pass
