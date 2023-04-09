@@ -13,8 +13,6 @@ micros:
       env:
         - name: BOT_TOKEN
           description: Secret token of telegram bot
-        - name: WEBHOOK_SECRET
-          description: Secret value for telegram webhook
         - name: ENABLE_ERRORS_LOGS
           description: Enable logging of errors. Logs are stored in the "logs" Deta Base.
           default: "True"

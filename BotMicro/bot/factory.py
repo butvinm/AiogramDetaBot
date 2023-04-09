@@ -1,5 +1,7 @@
 import asyncio
 from os import getenv
+from string import ascii_letters, digits
+from random import choices
 
 from aiogram import Bot, Dispatcher
 from aiogram.utils.callback_answer import CallbackAnswerMiddleware
@@ -15,7 +17,7 @@ def create_bot(token: str) -> Bot:
     bot = Bot(token, parse_mode='HTML')
 
     webhook_url = getenv('DETA_SPACE_APP_HOSTNAME', '') + '/webhook'
-    webhook_secret = getenv('WEBHOOK_SECRET')
+    webhook_secret = ''.join(choices(ascii_letters + digits, k=32))
     loop = asyncio.get_event_loop()
     loop.run_until_complete(bot.set_webhook(url=webhook_url, secret_token=webhook_secret))
 

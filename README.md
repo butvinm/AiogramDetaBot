@@ -15,7 +15,7 @@ Telegram Bot template with [aiogram](https://github.com/aiogram/aiogram) for dep
 3. Run `space new` to link code with a new Space project
 4. Run `space push` to deploy the code to Deta Space
 5. Go to [Builder](https://deta.space/builder) and open builder instance of your project 
-6. Set up environment variables in Configuration section
+6. Set up your Telegram Bot token in Configuration section
 7. Click on `Open Builder Instance` button
 8. Send `/start` to your bot and check that it responds
 
