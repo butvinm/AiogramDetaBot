@@ -8,7 +8,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 aiogram-deta = { git = "https://github.com/mamsdeveloper/deta.git", branch = "main" }
-odetam = "^1.0.0"
 aiogram = "^3.0.0b1"
 
 [tool.poetry.group.dev.dependencies]
