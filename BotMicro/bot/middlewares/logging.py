@@ -4,7 +4,6 @@ from typing import Any, Awaitable, Callable, Dict
 from aiogram.dispatcher.middlewares.base import BaseMiddleware
 from aiogram.types import TelegramObject
 from deta import Base  # type: ignore
-from deta.base import _Base  # type: ignore
 
 
 class LoggingMiddleware(BaseMiddleware):
@@ -16,10 +15,11 @@ class LoggingMiddleware(BaseMiddleware):
     ) -> Any:
         time = datetime.now()
 
-        logging_base: _Base = Base('logs')
+        logging_base = Base('logs')
         logging_base.put(
             key=str(2 * 10**9 - time.timestamp()),
-            data={'time': time.isoformat(), 'update': event.json()}
+            data={'time': time.isoformat(), 'update': event.json()},
+            expire_in=60 * 60 * 2  # expire in two hours
         )
 
         return await handler(event, data)

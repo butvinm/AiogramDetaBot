@@ -11,13 +11,14 @@ router = Router()
 async def errors_handler(event: ErrorEvent):
     time = datetime.now()
 
-    logging_base: _Base = Base('logs')
+    logging_base = Base('logs')
     logging_base.put(
         key=str(2 * 10**9 - time.timestamp()),
         data={
             'time': time.isoformat(), 
             'exception': repr(event.exception),
             'update': event.update.json()
-        }
+        },
+        expire_in=60 * 60 * 2  # expire in two hours
     )
     
