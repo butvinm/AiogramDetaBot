@@ -12,7 +12,7 @@ micros:
     presets:
       env:
         - name: BOT_TOKEN
-          description: Secret token of telegram bot
+          description: Secret token of telegram bot from @BotFather
         - name: ENABLE_ERRORS_LOGS
           description: Enable logging of errors. Logs are stored in the "logs" Deta Base.
           default: "True"
