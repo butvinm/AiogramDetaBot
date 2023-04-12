@@ -7,8 +7,8 @@ from aiogram_deta.storage import DefaultKeyBuilder, DetaStorage
 from deta import Deta
 
 from bot.handlers import router as root_router
-from bot.middlewares.logging import LoggingMiddleware
 from bot.middlewares.callback_message import CallbackMessageMiddleware
+from bot.middlewares.logging import LoggingMiddleware
 
 
 def get_webhook_secret() -> str:
@@ -34,10 +34,15 @@ def create_dispatcher(deta: Deta) -> Dispatcher:
     dispatcher = Dispatcher(storage=storage)
 
     dispatcher.include_router(root_router)
-    dispatcher.callback_query.middleware(CallbackMessageMiddleware())
     dispatcher.callback_query.middleware(CallbackAnswerMiddleware())
+    dispatcher.callback_query.middleware(CallbackMessageMiddleware())
 
     if getenv('ENABLE_EVENTS_LOGS') == 'True':
-        dispatcher.update.middleware(LoggingMiddleware())
-        
+        try:
+            expire_after = int(getenv('EVENTS_LOGS_EXPIRE_AFTER', 0))
+        except ValueError:
+            expire_after = None
+
+        dispatcher.update.middleware(LoggingMiddleware(expire_after))
+
     return dispatcher

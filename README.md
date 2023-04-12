@@ -1,6 +1,6 @@
 Telegram Bot template with [aiogram](https://github.com/aiogram/aiogram) for deployment on [Deta Space](https://deta.space/).
 
-The bot has several useful features, including logging of errors and events to Deta Base, preset CallbackAnswer middleware, CallbackMessageMiddleware that inject query.message object into callback handler data, and automatic webhook setup.
+The bot has several useful features, including logging of errors and events to Deta Base, preset CallbackAnswer middleware and automatic webhook setup.
 
 ## Getting Started
 
@@ -24,7 +24,23 @@ The bot has several useful features, including logging of errors and events to D
 
 ## Features
 
-- Logging of errors and events to Deta Base (Can be disabled using `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables)
-- Preset CallbackAnswer middleware
-- CallbackMessageMiddleware that inject `query.message` object into callback handler data 
-- Automatic webhook setup
+### Logging of errors and events to Deta Base
+
+To enable logging of errors and events, set `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables to `True` in Develop - Configuration tab. Logs will be stored in `logs` tables. 
+Additionally, you can set 'ERROR_LOGS_EXPIRE_AFTER' and 'EVENTS_LOGS_EXPIRE_AFTER' environment variables to set expiration time for logs in seconds. By default, logs will be stored for 30 days.
+
+### Preset CallbackAnswer middleware
+
+CallbackAnswer middleware is used to automatically answer on all callback queries, so you don't need to do it manually. 
+
+### Automatic webhook setup
+
+The bot automatically sets webhook on startup.
+
+### CallbackMessageMiddleware
+
+Inject `query.message` into handler data as `message` argument 
+
+## Notes
+
+You can find version tuned for my personal purposes in `personal-tuned` branch. I may have some additional features 
