@@ -36,6 +36,11 @@ def create_dispatcher(deta: Deta) -> Dispatcher:
     dispatcher.callback_query.middleware(CallbackAnswerMiddleware())
 
     if getenv('ENABLE_EVENTS_LOGS') == 'True':
-        dispatcher.update.middleware(LoggingMiddleware())
+        try:
+            expire_after = int(getenv('EVENTS_LOGS_EXPIRE_AFTER', 0))
+        except ValueError:
+            expire_after = None
+
+        dispatcher.update.middleware(LoggingMiddleware(expire_after))
         
     return dispatcher
