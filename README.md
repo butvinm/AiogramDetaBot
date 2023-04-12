@@ -24,9 +24,18 @@ The bot has several useful features, including logging of errors and events to D
 
 ## Features
 
-- Logging of errors and events to Deta Base (Can be disabled using `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables)
-- Preset CallbackAnswer middleware
-- Automatic webhook setup
+### Logging of errors and events to Deta Base
+
+To enable logging of errors and events, set `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables to `True` in Develop - Configuration tab. Logs will be stored in `logs` tables. 
+Additionally, you can set 'ERROR_LOGS_EXPIRE_AFTER' and 'EVENTS_LOGS_EXPIRE_AFTER' environment variables to set expiration time for logs in seconds. By default, logs will be stored for 30 days.
+
+### Preset CallbackAnswer middleware
+
+CallbackAnswer middleware is used to automatically answer on all callback queries, so you don't need to do it manually. 
+
+### Automatic webhook setup
+
+The bot automatically sets webhook on startup.
 
 ## Notes
 
