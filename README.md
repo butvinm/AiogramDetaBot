@@ -1,6 +1,6 @@
 Telegram Bot template with [aiogram](https://github.com/aiogram/aiogram) for deployment on [Deta Space](https://deta.space/).
 
-The bot has several useful features, including logging of errors and events to Deta Base, preset CallbackAnswer middleware, CallbackMessageMiddleware that inject query.message object into callback handler data, and automatic webhook setup.
+The bot has several useful features, including logging of errors and events to Deta Base, preset CallbackAnswer middleware and automatic webhook setup.
 
 ## Getting Started
 
@@ -26,5 +26,8 @@ The bot has several useful features, including logging of errors and events to D
 
 - Logging of errors and events to Deta Base (Can be disabled using `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables)
 - Preset CallbackAnswer middleware
-- CallbackMessageMiddleware that inject `query.message` object into callback handler data 
 - Automatic webhook setup
+
+## Notes
+
+You can find version tuned for my personal purposes in `personal-tuned` branch. I may have some additional features 
