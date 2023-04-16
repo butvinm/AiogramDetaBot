@@ -8,7 +8,7 @@ from deta import Deta
 
 from bot.handlers import router as root_router
 from bot.middlewares.logging import LoggingMiddleware
-from utils.env_parse import parse_expire_after
+from utils.env_parse import parse_bool, parse_optional_int
 
 
 def get_webhook_secret() -> str:
@@ -36,8 +36,8 @@ def create_dispatcher(deta: Deta) -> Dispatcher:
     dispatcher.include_router(root_router)
     dispatcher.callback_query.middleware(CallbackAnswerMiddleware())
 
-    if getenv('ENABLE_EVENTS_LOGS') == 'True':
-        expire_after = parse_expire_after(getenv('EVENTS_LOGS_EXPIRE_AFTER', ''))
+    if parse_bool(getenv('ENABLE_EVENTS_LOGS', 'false')):
+        expire_after = parse_optional_int(getenv('EVENTS_LOGS_EXPIRE_AFTER', ''))
         dispatcher.update.middleware(LoggingMiddleware(expire_after))
         
     return dispatcher

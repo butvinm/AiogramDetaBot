@@ -2,8 +2,8 @@ from os import getenv
 
 from aiogram import Router
 from aiogram.types.error_event import ErrorEvent
-from utils.env_parse import parse_expire_after
 
+from utils.env_parse import parse_optional_int
 from utils.logging import log_to_deta
 
 router = Router()
@@ -11,7 +11,7 @@ router = Router()
 
 @router.errors()
 async def errors_handler(event: ErrorEvent):
-    expire_after = parse_expire_after(getenv('ERROR_LOGS_EXPIRE_AFTER', ''))
+    expire_after = parse_optional_int(getenv('ERROR_LOGS_EXPIRE_AFTER', ''))
     
     await log_to_deta(
         data={
