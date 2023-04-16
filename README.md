@@ -19,7 +19,7 @@ The bot has several useful features, including logging of errors and events to D
 4. Run `space push` to deploy the code to Deta Space
 5. Go to [Builder](https://deta.space/builder) and open builder instance of your project 
 6. Set up your Telegram Bot token in Develop - Configuration tab
-7. Return to Develop - Overview tab and click on `Open Builder Instance` button
+7. Return to Develop - Overview tab and click on `Open Builder Instance` button. There will be information about your bot's webhook, if it is set up correctly.
 8. Send `/start` to your bot and check that it responds
 
 ## Features
@@ -27,7 +27,7 @@ The bot has several useful features, including logging of errors and events to D
 ### Logging of errors and events to Deta Base
 
 To enable logging of errors and events, set `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables to `True` in Develop - Configuration tab. Logs will be stored in `logs` tables. 
-Additionally, you can set 'ERROR_LOGS_EXPIRE_AFTER' and 'EVENTS_LOGS_EXPIRE_AFTER' environment variables to set expiration time for logs in seconds. By default, logs will be stored for 30 days.
+Additionally, you can set `ERROR_LOGS_EXPIRE_AFTER` and `EVENTS_LOGS_EXPIRE_AFTER` environment variables to set expiration time for logs in seconds. If them values empty, logs will be stored forever.
 
 ### Preset CallbackAnswer middleware
 
@@ -36,6 +36,10 @@ CallbackAnswer middleware is used to automatically answer on all callback querie
 ### Automatic webhook setup
 
 The bot automatically sets webhook on startup.
+
+### Page with webhook info
+
+You can find webhook info on `/info` page. Root page redirects to `/info` page.
 
 ## Notes
 

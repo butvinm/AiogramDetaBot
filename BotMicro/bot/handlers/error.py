@@ -12,10 +12,11 @@ router = Router()
 async def errors_handler(event: ErrorEvent):
     time = datetime.now()
 
-    try:
-        expire_after = int(getenv('ERROR_LOGS_EXPIRE_AFTER', 0))
-    except ValueError:
+    expire_after_str = getenv('ERROR_LOGS_EXPIRE_AFTER')
+    if expire_after_str is None or expire_after_str == '':
         expire_after = None
+    else:
+        expire_after = int(expire_after_str)
         
     logging_base = Base('logs')
     logging_base.put(
