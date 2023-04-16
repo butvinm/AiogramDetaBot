@@ -27,7 +27,7 @@ The bot has several useful features, including logging of errors and events to D
 ### Logging of errors and events to Deta Base
 
 To enable logging of errors and events, set `ENABLE_ERRORS_LOGS` and `ENABLE_EVENTS_LOGS` environment variables to `True` in Develop - Configuration tab. Logs will be stored in `logs` tables. 
-Additionally, you can set `ERROR_LOGS_EXPIRE_AFTER` and `EVENTS_LOGS_EXPIRE_AFTER` environment variables to set expiration time for logs in seconds. If them values empty, logs will be stored forever.
+Additionally, you can set `ERROR_LOGS_EXPIRE_AFTER` and `EVENTS_LOGS_EXPIRE_AFTER` environment variables to set expiration time for logs in seconds. By default, logs will be stored forever.
 
 ### Preset CallbackAnswer middleware
 
