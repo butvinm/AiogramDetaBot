@@ -3,6 +3,7 @@ v: 0
 micros:
   - name: BotMicro
     src: BotMicro
+    run: uvicorn main:app
     engine: python3.9
     primary: true
     public_routes:
