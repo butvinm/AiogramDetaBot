@@ -1,4 +1,3 @@
-import asyncio
 from os import getenv
 
 from aiogram import Bot, Dispatcher
@@ -11,20 +10,9 @@ from bot.middlewares.logging import LoggingMiddleware
 from utils.env_parse import parse_bool, parse_optional_int
 
 
-def get_webhook_secret() -> str:
-    return getenv('DETA_SPACE_APP_MICRO_NAME', '') + getenv('DETA_PROJECT_KEY', '')[:4]
-
-
-def create_bot(token: str) -> tuple[Bot, str]:
+def create_bot(token: str) -> Bot:
     bot = Bot(token, parse_mode='HTML')
-
-    webhook_url = getenv('DETA_SPACE_APP_HOSTNAME', '') + '/webhook'
-    webhook_secret = get_webhook_secret()
-
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(bot.set_webhook(url=webhook_url, secret_token=webhook_secret))
-
-    return bot, webhook_secret
+    return bot
 
 
 def create_dispatcher(deta: Deta) -> Dispatcher:
@@ -39,5 +27,5 @@ def create_dispatcher(deta: Deta) -> Dispatcher:
     if parse_bool(getenv('ENABLE_EVENTS_LOGS', 'false')):
         expire_after = parse_optional_int(getenv('EVENTS_LOGS_EXPIRE_AFTER', ''))
         dispatcher.update.middleware(LoggingMiddleware(expire_after))
-        
+
     return dispatcher
