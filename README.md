@@ -1,3 +1,10 @@
+> WARNING
+> 
+> Deta Space is shutting down
+>
+> https://deta.space/sunset
+> 
+
 Telegram Bot template with [aiogram](https://github.com/aiogram/aiogram) for deployment on [Deta Space](https://deta.space/).
 
 The bot has several useful features, including logging of errors and events to Deta Base, preset CallbackAnswer middleware and automatic webhook setup.
